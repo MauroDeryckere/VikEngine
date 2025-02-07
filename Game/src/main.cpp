@@ -1,10 +1,11 @@
 #include "Engine.h"
 
-#include <iostream>
-
-// entry point of program.
 int main()
 {
-	std::cout << "Hello CMake \n";
+	using namespace VIK;
+	VikEngine engine{ };
+
+	engine.Run();
+
 	return 0;
 }
