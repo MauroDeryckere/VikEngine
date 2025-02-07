@@ -3,6 +3,8 @@
 add_executable(Game
     src/main.cpp
 )
+# Alias VIKENGINE to the actual executable
+add_executable(VIKENGINE ALIAS Game)
 
 target_link_libraries(Game PRIVATE Engine)
 
