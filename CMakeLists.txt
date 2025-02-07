@@ -16,7 +16,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
 # Project name
-project ("VikEngine")
+project ("VIKENGNE")
 
 # Set the name of the executable
 set(EXECUTABLE_NAME ${PROJECT_NAME})
