@@ -11,3 +11,7 @@ target_include_directories(Engine
     PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include"  # API headers
     PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src"     # Internal headers (not exposed)
 )
+
+# Set C++ standard for Engine
+# Private to allow different cpp version than engine if wanted
+target_compile_features(Engine PRIVATE cxx_std_23)
