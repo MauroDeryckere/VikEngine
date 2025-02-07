@@ -2,7 +2,7 @@
 
 # @REGION PROJECT SETUP
 
-cmake_minimum_required (VERSION 3.10)
+cmake_minimum_required (VERSION 3.27)
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -13,7 +13,6 @@ endif()
 # Any output by targets -> binary dir
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
 # Project name
 project ("VIKENGINE")
