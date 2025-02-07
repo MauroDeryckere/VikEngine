@@ -2,7 +2,7 @@
 
 # @REGION PROJECT SETUP
 
-cmake_minimum_required (VERSION 3.8)
+cmake_minimum_required (VERSION 3.10)
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -46,8 +46,4 @@ add_subdirectory ("Game")
 
 
 # on Visual Studio, set our app as the default project
-# set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT GAME)
-
-# Include directories
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src/Engine")
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src/Game")
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT VIKENGINE)
