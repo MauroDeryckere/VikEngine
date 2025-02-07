@@ -38,11 +38,13 @@ endif()
 # Include sub-projects.
 add_subdirectory ("Libs")
 add_subdirectory ("Engine")
+message(STATUS "Engine target created: ${Engine}")
 add_subdirectory ("Game")
+message(STATUS "Game target created: ${Game}")
 
 # @ENDREGION SOURCE FILES & LIBRARIES
 
 
 
 # on Visual Studio, set our app as the default project
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT VIKENGINE)
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Game)
