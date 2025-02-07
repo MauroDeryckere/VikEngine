@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-
+// entry point of program.
 int main()
 {
 	std::cout << "Hello CMake \n";

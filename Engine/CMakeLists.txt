@@ -13,5 +13,4 @@ target_include_directories(Engine
 )
 
 # Set C++ standard for Engine
-# Private to allow different cpp version than engine if wanted
-target_compile_features(Engine PRIVATE cxx_std_23)
+target_compile_features(Engine PUBLIC cxx_std_23)
