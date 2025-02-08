@@ -22,6 +22,7 @@ set(SDL_STATIC ON)
 # We use EXCLUDE_FROM_ALL so that its install targets and configs don't
 # pollute upwards into our configuration.
 add_subdirectory(SDL EXCLUDE_FROM_ALL)	
+set(SDL3_INCLUDE_DIRS "${CMAKE_SOURCE_DIR}/SDL/include/SDL3")
 
 # Create an interface library for alllibraries
 add_library(Libs INTERFACE)

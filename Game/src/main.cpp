@@ -8,8 +8,8 @@ void load()
 }
 
 // SDL needs to be able to overwrite main depending on the platform here
-#include "../../Libs/SDL/include/SDL3/SDL.h"
-#include "../../Libs/SDL/include/SDL3/SDL_main.h"
+#include "SDL3/SDL.h"
+#include "SDL3/SDL_main.h"
 int main(int, char*[])
 {
 	//bool test{ false };
