@@ -10,6 +10,8 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
 # prevent installing to system directories. 
 set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}" CACHE INTERNAL "")
+
+# allow custom debug type
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release;CustomDebug" CACHE STRING "Configs" FORCE)
 
 if(CMAKE_BUILD_TYPE STREQUAL "CustomDebug")
