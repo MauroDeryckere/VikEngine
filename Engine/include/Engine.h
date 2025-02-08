@@ -1,6 +1,7 @@
 #ifndef VIKENGINE
 #define VIKENGINE
 
+#pragma once
 #include <string>
 #include <functional>
 
