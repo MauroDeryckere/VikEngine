@@ -40,6 +40,7 @@ jobs:
         strategy:
           fail-fast: false
           matrix:
+              target: [x86_64, aarch64]
               config: [Debug, Release, CustomDebug]
         steps:
           - uses: actions/checkout@v4
@@ -70,7 +71,7 @@ jobs:
         strategy:
           fail-fast: false
           matrix:
-              target: ['']
+              target: [x86_64, arm64] # Apple Silicon M1/M2 + Intel architectures
               config: [Debug, Release, CustomDebug] 
 
         steps:
@@ -82,7 +83,7 @@ jobs:
             with:
                 xcode-version: "16.1"
           - name: Configure
-            run: cmake -G "Xcode" -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED=NO -DCMAKE_SYSTEM_NAME=${{ matrix.target }} -DSDL_STATIC=ON -DSDL_SHARED=OFF -S . -B build/${{ matrix.config }}
+            run: cmake -G "Xcode" -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED=NO -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64 -DCMAKE_SYSTEM_NAME=${{ matrix.target }} -DSDL_STATIC=ON -DSDL_SHARED=OFF -S . -B build/${{ matrix.config }}
           - name: Build
             run: cmake --build build/${{ matrix.config }} --target install --config ${{ matrix.config }}
 
