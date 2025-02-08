@@ -4,10 +4,22 @@
 
 namespace VIK
 {
-	void VikEngine::Run() noexcept
+	VikEngine::VikEngine(const std::string& dataPath, const std::string& windowTitle)
 	{
-		// TODO add gameloop
+		std::cout << "Creating the engine!\n";
+	}
 
-		std::cout << "Running the engine!";
+	VikEngine::~VikEngine()
+	{
+		std::cout << "Destroying the engine!\n";
+	}
+
+	void VikEngine::Run(const std::function<void()>& load) noexcept
+	{
+		std::cout << "Running the engine!\n";
+		
+		load();
+
+		// TODO add gameloop
 	}
 }

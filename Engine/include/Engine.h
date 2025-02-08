@@ -1,16 +1,20 @@
 #ifndef VIKENGINE
 #define VIKENGINE
 
+#pragma once
+#include <string>
+#include <functional>
+
 namespace VIK
 {
 	class VikEngine final
 	{
 	public:
-		explicit VikEngine() = default;
-		~VikEngine() = default;
+		explicit VikEngine(const std::string& dataPath, const std::string& windowTitle);
+		~VikEngine();
 
 		// Start running the engine
-		void Run() noexcept;
+		void Run(const std::function<void()>& load) noexcept;
 
 		VikEngine(const VikEngine&) = delete;
 		VikEngine(VikEngine&&) = delete;
