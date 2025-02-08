@@ -89,7 +89,7 @@ jobs:
           - name: Create DMG
             run: | 
                 cd build
-                hdiutil create -size 2g -srcfolder release -volname VIKENGINE_apple_${{ matrix.target }} VIKENGINE_apple_${{ matrix.target }}.dmg
+                hdiutil create -size 2g -srcfolder {{ matrix.config }} -volname VIKENGINE_apple_${{ matrix.target }} VIKENGINE_apple_${{ matrix.target }}.dmg
           - name: Upload Build
             uses: actions/upload-artifact@v4
             with: 
