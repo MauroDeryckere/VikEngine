@@ -1,10 +1,12 @@
 ﻿#include "Engine.h"
 
+
 #include <iostream>
+#include "SDL3/SDL.h"
 
 namespace VIK
 {
-	VikEngine::VikEngine(const std::string& dataPath, const std::string& windowTitle)
+	VikEngine::VikEngine(std::string const& dataPath)
 	{
 		std::cout << "Creating the engine!\n";
 	}
@@ -14,11 +16,11 @@ namespace VIK
 		std::cout << "Destroying the engine!\n";
 	}
 
-	void VikEngine::Run(const std::function<void()>& load) noexcept
+	void VikEngine::Run(std::function<void()> const& load) noexcept
 	{
-		std::cout << "Running the engine!\n";
-		
 		load();
+
+		std::cout << "Running the engine!\n";
 
 		// TODO add gameloop
 	}

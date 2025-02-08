@@ -7,10 +7,13 @@ void load()
 	std::cout << "Loading the game!\n";
 }
 
-int main(int, char* [])
+VIKENGINE_MAIN
 {
 	using namespace VIK;
-	VikEngine engine("../Data/", "Pacman");
+
+	VikEngine engine{ "" };
+
 	engine.Run(load);
+
 	return 0;
 }
