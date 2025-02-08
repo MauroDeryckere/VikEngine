@@ -2,6 +2,7 @@
 
 add_executable(VIKENGINE
     src/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/iosLaunchScreen.storyboard
 )
 
 target_link_libraries(VIKENGINE PRIVATE Engine)
