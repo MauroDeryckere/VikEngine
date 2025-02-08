@@ -5,7 +5,7 @@ add_executable(VIKENGINE
     ${CMAKE_CURRENT_SOURCE_DIR}/iosLaunchScreen.storyboard
 )
 
-target_link_libraries(VIKENGINE PRIVATE Engine)
+target_link_libraries(VIKENGINE PUBLIC Engine)
 
 # Set C++ standard for Game
 # Private to allow different cpp version than engine if wanted
