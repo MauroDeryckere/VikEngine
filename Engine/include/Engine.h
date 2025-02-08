@@ -1,5 +1,5 @@
-#ifndef VIKENGINE
-#define VIKENGINE
+#ifndef _VIKENGINE
+#define _VIKENGINE
 
 #include "Asserts.h"
 

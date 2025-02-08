@@ -12,8 +12,15 @@ void load()
 #include "SDL3/SDL_main.h"
 int main(int, char*[])
 {
-	//bool test{ false };
-	//VIKENGINE_ASSERT(test, "test");
+	// testing for asserts, temporarily here but should make separate testing files
+	bool constexpr test1{ true };
+	VIK_DB_ASSERT(test1, "test 1 debug assert failed")
+	VIK_DB_ASSERT(test1, "")
+
+	//bool constexpr test2{ false };
+	//VIK_DB_ASSERT(test2, "")
+	//VIK_DB_ASSERT(test2, "test 2 debug assert failed")
+
 
 	using namespace VIK;
 
