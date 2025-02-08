@@ -10,6 +10,12 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 
 # prevent installing to system directories. 
 set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}" CACHE INTERNAL "")
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release;CustomDebug" CACHE STRING "Configs" FORCE)
+
+if(CMAKE_BUILD_TYPE STREQUAL "CustomDebug")
+    add_compile_definitions(VIKENGINE_CUSTOM_DEBUG)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DLOG_VERBOSE -DENABLE_MEMORY_TRACKING")
+endif()
 
 # Project name
 project ("VIKENGINE")
