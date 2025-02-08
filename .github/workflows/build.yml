@@ -21,7 +21,7 @@ jobs:
           - name: Configure
             run: cmake -DCMAKE_SYSTEM_NAME=${{ matrix.target }} -DCMAKE_SYSTEM_VERSION="10.0" -A${{ matrix.arch }} -S . -B build
           - name: Build
-            run: cmake --build build --target VIKENGINE --config ${{ matrix.config }}
+            run: cmake --build build/${{ matrix.config }} --target VIKENGINE --config ${{ matrix.config }}
           - name: Upload Build
             uses: actions/upload-artifact@v4
             if: ${{ matrix.target != 'WindowsStore' }}
@@ -50,9 +50,9 @@ jobs:
                 sudo apt-get update
                 sudo apt-get install -y --no-install-recommends build-essential git cmake ninja-build gnome-desktop-testing libasound2-dev libpulse-dev libaudio-dev libjack-dev libsndio-dev libx11-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev fcitx-libs-dev libpipewire-0.3-dev libwayland-dev libdecor-0-dev liburing-dev
           - name: Configure
-            run: cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -S . -B build
+            run: cmake -G Ninja -DCMAKE_BUILD_TYPE=${{ matrix.config }} -S . -B build/${{ matrix.config }}
           - name: Build
-            run: cmake --build build --target VIKENGINE --config ${{ matrix.config }}
+            run: cmake --build build/${{ matrix.config }} --target VIKENGINE --config ${{ matrix.config }}
           - name: Upload Build
             uses: actions/upload-artifact@v4
             with: 
