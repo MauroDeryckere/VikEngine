@@ -18,6 +18,7 @@ namespace VIK
 
 	void VikEngine::Run(std::function<void()> const& load) noexcept
 	{
+		std::cout << "Loading the game!\n";
 		load();
 
 		std::cout << "Running the engine!\n";

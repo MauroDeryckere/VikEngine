@@ -3,7 +3,7 @@
 # define engine as static library
 add_library(Engine STATIC
     src/Engine.cpp
-)
+    "include/Asserts.h")
 
 target_link_libraries(Engine PRIVATE Libs)
 

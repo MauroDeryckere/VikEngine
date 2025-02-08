@@ -1,18 +1,11 @@
 #ifndef VIKENGINE
 #define VIKENGINE
 
-// For entry point in main.cpp
-#ifdef _WIN32
-	#include <minwindef.h>
-	#define VIKENGINE_MAIN int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
-#else
-	#define VIKENGINE_MAIN int main(int, char* [])
-#endif
-
+#include "Asserts.h"
 
 #include <string>
+#include <filesystem>
 #include <functional>
-
 
 namespace VIK
 {
