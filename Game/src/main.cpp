@@ -12,9 +12,9 @@ void load()
 #include "../../Libs/SDL/include/SDL3/SDL_main.h"
 int main(int, char*[])
 {
-	bool test{ true };
+	bool test{ false };
 
-	//VIKENGINE_ASSERT(test, "");
+	VIKENGINE_ASSERT(test, "test");
 
 	using namespace VIK;
 
