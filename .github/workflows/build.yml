@@ -8,7 +8,7 @@ jobs:
         strategy:
           fail-fast: false
           matrix:
-              arch: [x64, x86, ARM64]
+              arch: [x64, Win32, ARM64]
               target: [Windows]
 
         steps:
