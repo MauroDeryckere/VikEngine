@@ -58,7 +58,7 @@ endif()
 # @REGION SOURCE FILES & LIBRARIES
 
 # Include sub-projects.
-add_subdirectory ("Libs")
+add_subdirectory ("Libs" EXCLUDE_FROM_ALL)
 message(STATUS "Libs dir created! ")
 add_subdirectory ("Engine")
 message(STATUS "Engine dir created! ")
