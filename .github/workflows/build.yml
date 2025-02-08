@@ -26,13 +26,13 @@ jobs:
             uses: actions/upload-artifact@v4
             if: ${{ matrix.target != 'WindowsStore' }}
             with: 
-                name: VIKENGINE-${{ matrix.target }}-${{ matrix.arch }}
+                name: VIKENGINE-${{ matrix.target }}-${{ matrix.arch }}-${{ matrix.config }}
                 path: |
-                    build/Release/*.exe
-                    build/Release/*.dll
-                    build/Release/*.ttf
-                    build/Release/*.ogg
-                    build/Release/*.svg
+                    build/-${{ matrix.config }}/*.exe
+                    build/-${{ matrix.config }}/*.dll
+                    build/-${{ matrix.config }}/*.ttf
+                    build/-${{ matrix.config }}/*.ogg
+                    build/-${{ matrix.config }}/*.svg
                     
     build-linux:
         name: Build for Linux
@@ -56,13 +56,13 @@ jobs:
           - name: Upload Build
             uses: actions/upload-artifact@v4
             with: 
-                name: VIKENGINE-Linux
+                name: VIKENGINE-Linux-${{ matrix.config }}
                 path: |
-                    build/Release/VIKENGINE
-                    build/Release/*.so
-                    build/Release/*.ttf
-                    build/Release/*.ogg
-                    build/Release/*.svg
+                    build/-${{ matrix.config }}/VIKENGINE
+                    build/-${{ matrix.config }}/*.so
+                    build/-${{ matrix.config }}/*.ttf
+                    build/-${{ matrix.config }}/*.ogg
+                    build/-${{ matrix.config }}/*.svg
 
     build-mac:
         name: Build for Apple
@@ -93,5 +93,5 @@ jobs:
           - name: Upload Build
             uses: actions/upload-artifact@v4
             with: 
-                name: VIKENGINE-apple-${{ matrix.target }}
+                name: VIKENGINE-apple-${{ matrix.target }}-${{ matrix.config }}
                 path: build/*.dmg
