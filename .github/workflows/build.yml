@@ -83,7 +83,7 @@ jobs:
             with:
                 xcode-version: "16.1"
           - name: Configure
-            run: cmake -G "Xcode" -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED=NO -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_SYSTEM_NAME=${{ matrix.target }} -DSDL_STATIC=ON -DSDL_SHARED=OFF -S . -B build/${{ matrix.config }}
+            run: cmake -G "Xcode" -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED=NO -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" -DCMAKE_SYSTEM_NAME=Darwin -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DSDL_STATIC=ON -DSDL_SHARED=OFF -S . -B build/${{ matrix.config }}
           - name: Build
             run: cmake --build build/${{ matrix.config }} --target install --config ${{ matrix.config }}
 
