@@ -34,13 +34,82 @@ endif()
 
 # Include sub-projects.
 add_subdirectory ("Libs")
+message(STATUS "Libs dir created! ")
 add_subdirectory ("Engine")
-message(STATUS "Engine target created: ${Engine}")
+message(STATUS "Engine dir created! ")
 add_subdirectory ("Game")
-message(STATUS "Game target created: ${Game}")
+message(STATUS "Game dir created! ")
 
 # @ENDREGION SOURCE FILES & LIBRARIES
 
+
+# @REGION PLATFORMS AND RESOURCES
+
+# Dealing with assets
+# We have some non-code resources that our application needs in order to work. How we deal with those differs per platform.
+if (APPLE)
+    # on Apple targets, the application bundle has a "resources" subfolder where we can place our assets.
+    # SDL_GetBasePath() gives us easy access to that location.
+    set(input_root "${CMAKE_CURRENT_LIST_DIR}/src")
+    macro(add_resource FILE)
+        file(RELATIVE_PATH relpath "${input_root}" "${FILE}")
+        get_filename_component(relpath "${relpath}" DIRECTORY)
+        target_sources(${EXECUTABLE_NAME} PRIVATE ${FILE})
+        set_property(SOURCE ${FILE} PROPERTY MACOSX_PACKAGE_LOCATION "Resources/${relpath}")
+    endmacro()
+endif()
+
+
+# for when we have a resources folder
+# if(WIN32)
+    # Ensure that the Resources directory is created inside the final output directory
+    # add_custom_command(TARGET ${EXECUTABLE_NAME} POST_BUILD
+        # COMMAND ${CMAKE_COMMAND} -E copy_directory
+            # "${CMAKE_SOURCE_DIR}/Resources"
+            # "$<TARGET_FILE_DIR:${EXECUTABLE_NAME}>/Resources"
+    # )
+# endif()
+
+# set some extra configs for each platform
+set_target_properties(${EXECUTABLE_NAME} PROPERTIES 
+    # On macOS, make a proper .app bundle instead of a bare executable
+    MACOSX_BUNDLE TRUE
+
+    # Currently not building on mobile but keep this in, in case we do in the future
+
+    # Set the Info.plist file for Apple Mobile platforms. Without this file, your app
+    # will not launch. 
+    MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/src/Info.plist.in"
+
+    # in Xcode, create a Scheme in the schemes dropdown for the app.
+    XCODE_GENERATE_SCHEME TRUE
+    # Identification for Xcode
+    XCODE_ATTRIBUTE_BUNDLE_IDENTIFIER "NES_EMULATOR"
+	XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "NES_EMULATOR"
+	XCODE_ATTRIBUTE_CURRENTYEAR "${CURRENTYEAR}"
+)
+
+# On macOS Platforms, ensure that the bundle is valid for distribution by calling fixup_bundle.
+# note that fixup_bundle does not work on iOS, so you will want to use static libraries 
+# or manually copy dylibs and set rpaths
+if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    # tell Install about the target, otherwise fixup won't know about the transitive dependencies
+    install(TARGETS ${EXECUTABLE_NAME}
+    	BUNDLE DESTINATION ./install COMPONENT Runtime
+   	    RUNTIME DESTINATION ./install/bin COMPONENT Runtime
+    )
+	
+    set(DEP_DIR "${CMAKE_BINARY_DIR}")  # where to look for dependencies when fixing up
+    INSTALL(CODE 
+        "include(BundleUtilities)
+        fixup_bundle(\"$<TARGET_BUNDLE_DIR:${EXECUTABLE_NAME}>\" \"\" \"${DEP_DIR}\")
+        " 
+    )
+    set(CPACK_GENERATOR "DragNDrop")
+    include(CPack)
+endif()
+
+# @ENDREGION PLATFORMS AND RESOURCES
 
 
 # on Visual Studio, set our app as the default project
