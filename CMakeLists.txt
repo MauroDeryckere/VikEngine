@@ -11,12 +11,29 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIGURATION>")
 # prevent installing to system directories. 
 set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}" CACHE INTERNAL "")
 
-# allow custom debug type
+# Allow custom debug type
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release;CustomDebug" CACHE STRING "Configs" FORCE)
 
-if(CMAKE_BUILD_TYPE STREQUAL "CustomDebug")
+if(CMAKE_BUILD_TYPE STREQUAL "CustomDebug" OR CMAKE_CONFIGURATION_TYPES MATCHES "CustomDebug")
     add_compile_definitions(VIKENGINE_CUSTOM_DEBUG)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DLOG_VERBOSE -DENABLE_MEMORY_TRACKING")
+    
+    message(STATUS "Building in CustomDebug mode")
+    
+    if(MSVC)
+        # MSVC-specific settings for CustomDebug
+        set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /DLOG_VERBOSE /DENABLE_MEMORY_TRACKING")
+    endif()
+
+     if(APPLE)
+        # Xcode-specific settings for CustomDebug
+        set(CMAKE_XCODE_ATTRIBUTE_OTHER_CFLAGS "${CMAKE_XCODE_ATTRIBUTE_OTHER_CFLAGS} -DLOG_VERBOSE -DENABLE_MEMORY_TRACKING")
+    endif()
+    
+    if(LINUX)
+        # Linux-specific flags for CustomDebug
+        set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DLOG_VERBOSE -DENABLE_MEMORY_TRACKING")
+    endif()
 endif()
 
 # Project name
