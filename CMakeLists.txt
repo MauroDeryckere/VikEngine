@@ -79,13 +79,13 @@ set_target_properties(${EXECUTABLE_NAME} PROPERTIES
 
     # Set the Info.plist file for Apple Mobile platforms. Without this file, your app
     # will not launch. 
-    MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/src/Info.plist.in"
+    MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Game/Info.plist.in"
 
     # in Xcode, create a Scheme in the schemes dropdown for the app.
     XCODE_GENERATE_SCHEME TRUE
     # Identification for Xcode
-    XCODE_ATTRIBUTE_BUNDLE_IDENTIFIER "NES_EMULATOR"
-	XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "NES_EMULATOR"
+    XCODE_ATTRIBUTE_BUNDLE_IDENTIFIER "VIKENGINE"
+	XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "VIKENGINE"
 	XCODE_ATTRIBUTE_CURRENTYEAR "${CURRENTYEAR}"
 )
 
