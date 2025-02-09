@@ -24,7 +24,7 @@ int main(int, char*[])
 
 	using namespace VIK;
 
-	VikEngine engine{ "" };
+	VikEngine engine("../Data/", "Viking Game");
 
 	engine.Run(load);
 

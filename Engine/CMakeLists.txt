@@ -3,7 +3,7 @@
 # define engine as static library
 add_library(Engine STATIC
     src/Engine.cpp
-    "include/Asserts.h")
+    "include/Asserts.h" "include/Singleton.h" "include/Renderer.h" "src/Renderer.cpp" "src/Renderer.cpp")
 
 target_link_libraries(Engine PRIVATE Libs)
 

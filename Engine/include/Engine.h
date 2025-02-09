@@ -12,7 +12,7 @@ namespace VIK
 	class VikEngine final
 	{
 	public:
-		explicit VikEngine(std::string const& dataPath);
+		explicit VikEngine(std::string const& dataPath, const std::string& windowTitle);
 		~VikEngine();
 
 		// Start running the engine
